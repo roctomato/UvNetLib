@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="log4cpp" Version="10.0.0" InternalType="Library">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="src/Win32DebugAppender.cpp"/>
+    <File Name="src/TriggeringEventEvaluatorFactory.cpp"/>
+    <File Name="src/TimeStamp.cpp"/>
+    <File Name="src/SyslogAppender.cpp"/>
+    <File Name="src/StringUtil.hh"/>
+    <File Name="src/StringUtil.cpp"/>
+    <File Name="src/StringQueueAppender.cpp"/>
+    <File Name="src/SmtpAppender.cpp"/>
+    <File Name="src/SimpleLayout.cpp"/>
+    <File Name="src/SimpleConfigurator.cpp"/>
+    <File Name="src/RollingFileAppender.cpp"/>
+    <File Name="src/RemoteSyslogAppender.cpp"/>
+    <File Name="src/PThreads.cpp"/>
+    <File Name="src/PropertyConfiguratorImpl.hh"/>
+    <File Name="src/PropertyConfiguratorImpl.cpp"/>
+    <File Name="src/PropertyConfigurator.cpp"/>
+    <File Name="src/Properties.hh"/>
+    <File Name="src/Properties.cpp"/>
+    <File Name="src/Priority.cpp"/>
+    <File Name="src/PortabilityImpl.hh"/>
+    <File Name="src/PortabilityImpl.cpp"/>
+    <File Name="src/PatternLayout.cpp"/>
+    <File Name="src/PassThroughLayout.cpp"/>
+    <File Name="src/OstreamAppender.cpp"/>
+    <File Name="src/OmniThreads.cpp"/>
+    <File Name="src/NTEventLogAppender.cpp"/>
+    <File Name="src/NDC.cpp"/>
+    <File Name="src/MSThreads.cpp"/>
+    <File Name="src/Manipulator.cpp"/>
+    <File Name="src/Makefile.in"/>
+    <File Name="src/Makefile.am"/>
+    <File Name="src/LoggingEvent.cpp"/>
+    <File Name="src/Localtime.hh"/>
+    <File Name="src/Localtime.cpp"/>
+    <File Name="src/LevelEvaluator.cpp"/>
+    <File Name="src/LayoutsFactory.cpp"/>
+    <File Name="src/LayoutAppender.cpp"/>
+    <File Name="src/IdsaAppender.cpp"/>
+    <File Name="src/HierarchyMaintainer.cpp"/>
+    <File Name="src/FixedContextCategory.cpp"/>
+    <File Name="src/Filter.cpp"/>
+    <File Name="src/FileAppender.cpp"/>
+    <File Name="src/FactoryParams.cpp"/>
+    <File Name="src/DummyThreads.cpp"/>
+    <File Name="src/DllMain.cpp"/>
+    <File Name="src/DailyRollingFileAppender.cpp"/>
+    <File Name="src/Configurator.cpp"/>
+    <File Name="src/CategoryStream.cpp"/>
+    <File Name="src/Category.cpp"/>
+    <File Name="src/BufferingAppender.cpp"/>
+    <File Name="src/BasicLayout.cpp"/>
+    <File Name="src/BasicConfigurator.cpp"/>
+    <File Name="src/AppenderSkeleton.cpp"/>
+    <File Name="src/AppendersFactory.cpp"/>
+    <File Name="src/Appender.cpp"/>
+    <File Name="src/AbortAppender.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <File Name="include/log4cpp/Win32DebugAppender.hh"/>
+    <File Name="include/log4cpp/TriggeringEventEvaluatorFactory.hh"/>
+    <File Name="include/log4cpp/TriggeringEventEvaluator.hh"/>
+    <File Name="include/log4cpp/TimeStamp.hh"/>
+    <File Name="include/log4cpp/SyslogAppender.hh"/>
+    <File Name="include/log4cpp/StringQueueAppender.hh"/>
+    <File Name="include/log4cpp/SmtpAppender.hh"/>
+    <File Name="include/log4cpp/SimpleLayout.hh"/>
+    <File Name="include/log4cpp/SimpleConfigurator.hh"/>
+    <File Name="include/log4cpp/RollingFileAppender.hh"/>
+    <File Name="include/log4cpp/RemoteSyslogAppender.hh"/>
+    <File Name="include/log4cpp/PropertyConfigurator.hh"/>
+    <File Name="include/log4cpp/Priority.hh"/>
+    <File Name="include/log4cpp/Portability.hh"/>
+    <File Name="include/log4cpp/PatternLayout.hh"/>
+    <File Name="include/log4cpp/PassThroughLayout.hh"/>
+    <File Name="include/log4cpp/OstreamAppender.hh"/>
+    <File Name="include/log4cpp/NTEventLogAppender.hh"/>
+    <File Name="include/log4cpp/NDC.hh"/>
+    <File Name="include/log4cpp/Manipulator.hh"/>
+    <File Name="include/log4cpp/Makefile.in"/>
+    <File Name="include/log4cpp/Makefile.am"/>
+    <File Name="include/log4cpp/LoggingEvent.hh"/>
+    <File Name="include/log4cpp/LevelEvaluator.hh"/>
+    <File Name="include/log4cpp/LayoutsFactory.hh"/>
+    <File Name="include/log4cpp/LayoutAppender.hh"/>
+    <File Name="include/log4cpp/Layout.hh"/>
+    <File Name="include/log4cpp/IdsaAppender.hh"/>
+    <File Name="include/log4cpp/HierarchyMaintainer.hh"/>
+    <File Name="include/log4cpp/FixedContextCategory.hh"/>
+    <File Name="include/log4cpp/Filter.hh"/>
+    <File Name="include/log4cpp/FileAppender.hh"/>
+    <File Name="include/log4cpp/FactoryParams.hh"/>
+    <File Name="include/log4cpp/Export.hh"/>
+    <File Name="include/log4cpp/DailyRollingFileAppender.hh"/>
+    <File Name="include/log4cpp/convenience.h"/>
+    <File Name="include/log4cpp/Configurator.hh"/>
+    <File Name="include/log4cpp/config-MinGW32.h"/>
+    <File Name="include/log4cpp/CategoryStream.hh"/>
+    <File Name="include/log4cpp/Category.hh"/>
+    <File Name="include/log4cpp/BufferingAppender.hh"/>
+    <File Name="include/log4cpp/BasicLayout.hh"/>
+    <File Name="include/log4cpp/BasicConfigurator.hh"/>
+    <File Name="include/log4cpp/AppenderSkeleton.hh"/>
+    <File Name="include/log4cpp/AppendersFactory.hh"/>
+    <File Name="include/log4cpp/Appender.hh"/>
+    <File Name="include/log4cpp/AbortAppender.hh"/>
+  </VirtualDirectory>
+  <Settings Type="Dynamic Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <IncludePath Value="include"/>
+        <Preprocessor Value="LOG4CPP_HAVE_INT64_T"/>
+      </Compiler>
+      <Linker Options="" Required="yes">
+        <Library Value="ws2_32"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../lib/lib$(ProjectName).dll" IntermediateDirectory="./Debug/$(ProjectName)" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).dll" IntermediateDirectory="./Release" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>

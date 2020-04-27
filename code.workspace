@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="code" Database="" Version="10.0.0">
+  <Project Name="UvNetLib" Path="UvNetLib/UvNetLib.project" Active="No"/>
+  <Project Name="TestNetLib" Path="TestUvLib/TestNetLib.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="UvNetLib" ConfigName="Debug"/>
+      <Project Name="TestNetLib" ConfigName="Debug"/>
+      <Project Name="hiredis" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="UvNetLib" ConfigName="Release"/>
+      <Project Name="TestNetLib" ConfigName="Release"/>
+      <Project Name="hiredis" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

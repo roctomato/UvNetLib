@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="TestNetLib" Version="10.0.0" InternalType="Console">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007windows000000000000]]>
+    </Plugin>
+  </Plugins>
+  <VirtualDirectory Name="kcp">
+    <File Name="../common/kcp/UvKcp.cpp"/>
+    <File Name="../common/kcp/UvKcp.hpp"/>
+    <File Name="../common/kcp/ikcp.h"/>
+    <File Name="../common/kcp/ikcp.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="http">
+    <File Name="../common/http/chttphandler.h"/>
+    <File Name="../common/http/chttphandler.cpp"/>
+    <File Name="../common/http/uri.h"/>
+    <File Name="../common/http/LUrlParser.h"/>
+    <File Name="../common/http/LUrlParser.cpp"/>
+    <File Name="../common/http/http-server.cc"/>
+    <File Name="../common/http/http-client.cc"/>
+    <File Name="../common/http/http_parser.h"/>
+    <File Name="../common/http/http_parser.c"/>
+    <File Name="../common/http/http.h"/>
+    <File Name="../common/http/http.cc"/>
+    <File Name="../common/http/chttpparser.h"/>
+    <File Name="../common/http/chttpparser.cpp"/>
+    <File Name="../common/http/CHttpClientEx.hpp"/>
+    <File Name="../common/http/CHttpClientEx.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="common">
+    <File Name="../common/redis/libuv_adapt.h"/>
+    <File Name="../common/redis/asyncredis.h"/>
+    <File Name="../common/redis/asyncredis.cpp"/>
+    <File Name="../common/redis/chiredisbase.h"/>
+    <File Name="../common/redis/chiredisbase.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="protocol">
+    <File Name="../common/parse_p/net_protocol32_cmd32.h"/>
+    <File Name="../common/parse_p/net_protocol32_cmd32.cpp"/>
+  </VirtualDirectory>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="test_redis.cpp"/>
+    <File Name="test_udp.cpp"/>
+    <File Name="ChatClientHandler.cpp"/>
+    <File Name="ChatClientHandler.hpp"/>
+    <File Name="ChatServerHandler.cpp"/>
+    <File Name="ChatServerHandler.hpp"/>
+    <File Name="test_chat_server.cpp"/>
+    <File Name="test_tcp.cpp"/>
+    <File Name="test_thread.cpp"/>
+    <File Name="../common/log/log4cpploggerex.h"/>
+    <File Name="../common/log/log4cpploggerex.cpp"/>
+    <File Name="test_do_per_frame.cpp"/>
+    <File Name="test_timer_task.cpp"/>
+    <File Name="test_timer.cpp"/>
+    <File Name="test_http.cpp"/>
+    <File Name="main.cpp"/>
+  </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
+  <Dependencies Name="windows"/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="MinGW 64bit ( MSYS2 64bit )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall;-std=c++11" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <IncludePath Value="../thirdpart/libuv-1.29.1/include"/>
+        <IncludePath Value="../thirdpart/log4cpp/include"/>
+        <IncludePath Value="../thirdpart/hiredis-mingw-master"/>
+        <IncludePath Value="../UvNetLib/general"/>
+        <IncludePath Value="../UvNetLib/net"/>
+        <IncludePath Value="../UvNetLib/thread"/>
+        <IncludePath Value="../common/http"/>
+        <IncludePath Value="../common/log"/>
+        <IncludePath Value="../common/parse_p"/>
+        <IncludePath Value="../common/kcp"/>
+        <IncludePath Value="../common/redis"/>
+        <Preprocessor Value="_WIN32_WINNT=0x0600"/>
+      </Compiler>
+      <Linker Options="" Required="yes">
+        <LibraryPath Value="../win_lib"/>
+        <Library Value="UvNetLibD.dll"/>
+        <Library Value="uv.dll"/>
+        <Library Value="log4cpp"/>
+        <Library Value="hiredis"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../bin/$(ProjectName)/$(ProjectName)" IntermediateDirectory="../Debug/$(ProjectName)" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="../bin/$(ProjectName)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;-Wall" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="windows" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall;-std=c++11" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <IncludePath Value="../libuv"/>
+        <IncludePath Value="../UvNetLib/general"/>
+        <IncludePath Value="../UvNetLib/http"/>
+        <IncludePath Value="../UvNetLib/net"/>
+        <IncludePath Value="../common"/>
+        <IncludePath Value="../log4cpp/include"/>
+        <IncludePath Value="../protocol"/>
+        <IncludePath Value="../protobuf-2.5.0/src"/>
+        <Preprocessor Value="WIN32_LEAN_AND_MEAN"/>
+        <Preprocessor Value="_WIN32_WINNT=0x0600"/>
+        <Preprocessor Value="LOG4CPP_HAVE_INT64_T"/>
+      </Compiler>
+      <Linker Options="" Required="yes">
+        <LibraryPath Value="../lib"/>
+        <Library Value="uv"/>
+        <Library Value="log4cpp"/>
+        <Library Value="UvNetLibW"/>
+        <Library Value="advapi32"/>
+        <Library Value="iphlpapi"/>
+        <Library Value="psapi"/>
+        <Library Value="shell32"/>
+        <Library Value="user32"/>
+        <Library Value="userenv"/>
+        <Library Value="ws2_32"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../bin/$(ProjectName)/$(ProjectName).exe" IntermediateDirectory="../Debug/$(ProjectName)" Command="./$(ProjectName).exe" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="../bin/$(ProjectName)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
