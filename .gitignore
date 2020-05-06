@@ -1,0 +1,7 @@
+/Debug
+/bin
+/.build-debug
+/.codelite
+/compile_commands.json
+/Makefile
+/win_lib/libUvNetLibD.dll

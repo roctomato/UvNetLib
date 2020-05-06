@@ -29,6 +29,8 @@
     <File Name="../common/http/CHttpClientEx.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="common">
+    <File Name="../common/help/appnetstack.h"/>
+    <File Name="../common/help/appnetstack.cpp"/>
     <File Name="../common/redis/libuv_adapt.h"/>
     <File Name="../common/redis/asyncredis.h"/>
     <File Name="../common/redis/asyncredis.cpp"/>
@@ -42,6 +44,8 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="TestApp.cpp"/>
+    <File Name="TestApp.hpp"/>
     <File Name="test_redis.cpp"/>
     <File Name="test_udp.cpp"/>
     <File Name="ChatClientHandler.cpp"/>
@@ -86,7 +90,9 @@
         <IncludePath Value="../common/parse_p"/>
         <IncludePath Value="../common/kcp"/>
         <IncludePath Value="../common/redis"/>
+        <IncludePath Value="../common/help"/>
         <Preprocessor Value="_WIN32_WINNT=0x0600"/>
+        <Preprocessor Value="LOG4CPP_HAVE_INT64_T"/>
       </Compiler>
       <Linker Options="" Required="yes">
         <LibraryPath Value="../win_lib"/>

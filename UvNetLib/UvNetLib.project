@@ -9,6 +9,8 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <VirtualDirectory Name="thread">
+      <File Name="thread/MainLogicTask.cpp"/>
+      <File Name="thread/MainLogicTask.hpp"/>
       <File Name="thread/ThreadTask.cpp"/>
       <File Name="thread/MWorkThread.cpp"/>
       <File Name="thread/MWorkThread.hpp"/>
@@ -69,9 +71,6 @@
   </VirtualDirectory>
   <Description/>
   <Dependencies/>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
-  <Dependencies Name="windows"/>
   <Settings Type="Dynamic Library">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -214,4 +213,7 @@
       </Completion>
     </Configuration>
   </Settings>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
+  <Dependencies Name="windows"/>
 </CodeLite_Project>

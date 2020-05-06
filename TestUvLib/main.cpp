@@ -2,7 +2,7 @@
 #include "event_loop.h"
 #include "log4cpploggerex.h"
 #include "zby_debug.h"
-
+#include "TestApp.hpp"
 
 extern void test_http();
 extern void test_http2();
@@ -18,7 +18,8 @@ extern void test_udp();
 extern void test_block_redis();
 
 event_loop loop;
- 
+
+/* 
 bool InitLog()
 {
     std::string _logCfgFile = "server.config";
@@ -30,12 +31,14 @@ bool InitLog()
     }
     return true;
 }
+ */ 
 int main(int argc, char **argv)
 {
     
 	printf("%x\n",_WIN32_WINNT);
     //test_http();
-    if ( InitLog() ){ 
+/*   
+ if ( InitLog() ){ 
         //test_thread();
         //test_per_frame();
         //test_http2();
@@ -47,6 +50,18 @@ int main(int argc, char **argv)
         //test_udp();
         test_block_redis();
         loop.run();
-    }
+    }*/
+    
+    AppNetStack* as = AppNetStack::Instance();
+	if ( !as->Init( argc, argv, TestApp::Instance() ) ){
+		SYS_ERR("Init failed");
+		return -1;
+	}
+	
+    test_block_redis();
+	if ( !as->StartWork() ){
+		SYS_ERR("start work failed");
+		return -2;
+	}
 	return 0;
 }
