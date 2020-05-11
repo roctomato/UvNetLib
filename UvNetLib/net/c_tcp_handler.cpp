@@ -132,11 +132,12 @@ void CTcpHandler::StartRecv()
 }
 void CTcpHandler::HandleRead(ssize_t nread, const uv_buf_t* buf)
 {
-    this->_pHandleRecv->OnUvReceive(nread, buf);
     
     if(nread < 0) {
         this->HandleDisconnect(Disconnect_By_Peer);
-    } 
+    }else{
+        this->_pHandleRecv->OnUvReceive(nread, buf);
+    }
 }
 
 void CTcpHandler::Disconnect()

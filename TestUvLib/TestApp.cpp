@@ -2,7 +2,7 @@
 #include "zby_debug.h"
 #include "log4cpploggerex.h"
 #include "ChatServerHandler.hpp"
-
+extern test_chat();
 TestApp::TestApp()
 {
 }
@@ -49,5 +49,7 @@ bool TestApp::StartWork(AppNetStack* ans)
         SYS_ERR("START chat server err");
         return false;
     }
+    
+    ///test_chat();
     return true;
 }
