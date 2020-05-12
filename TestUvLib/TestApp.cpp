@@ -2,7 +2,9 @@
 #include "zby_debug.h"
 #include "log4cpploggerex.h"
 #include "ChatServerHandler.hpp"
-extern test_chat();
+#include "getopt.h"
+
+//extern test_chat();
 TestApp::TestApp()
 {
 }
@@ -16,16 +18,40 @@ bool TestApp::AllowExit(AppNetStack* ans)
     return true;
 }
 
-bool TestApp::Init(int argv, char* argc[], AppNetStack* ans)
+bool TestApp::Init(int argc, char* argv[], AppNetStack* ans)
 {
-    std::string _logCfgFile = "server.config";
+	std::string _logCfgFile = "server.config";
+    bool bKill = false;
+
+	do {
+		int ch;
+		
+		while((ch = getopt(argc,argv,"Cdkc:l:"))!= -1) {
+			switch ( ch ) {
+			case 'k':
+				bKill =true;
+				break;
+			case 'l':
+				_logCfgFile = optarg;
+				break;
+			case 'd':
+				ans->SetDaemon ( true );
+				break;
+		
+			}
+		}
+    }while(false);
+	
     try {
         InitLog(&Log4cppLoggerEx::Instance(), _logCfgFile.c_str());
     } catch(ConfigureExceptionEx& e) {
         printf("open log config file %s failed. Reason %s\n", _logCfgFile.c_str(), e.what());
         return false;
     }
-    
+    if ( bKill ) {
+			ans->Kill();
+			exit( 0 );
+	}
     SYS_INFO("INIT OK");
     return true;
 }

@@ -1,6 +1,10 @@
 #ifndef APPNETSTACK_H
 #define APPNETSTACK_H
 
+#ifndef _WIN32
+#include <unistd.h>
+#endif
+
 #include <iostream>
 #include <string>
 
