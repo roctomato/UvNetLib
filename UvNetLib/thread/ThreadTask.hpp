@@ -8,6 +8,9 @@
 #include "ZbyEvent.h"
 #include "zby_debug.h"
 
+#define DEFAULT_QUEUE  1000
+#define DEAFULT_WAIT_SECONDS 3
+
 class MWorkThread;
 
 class ThreadContext
@@ -17,6 +20,8 @@ public:
     virtual void OnStart() {}
     virtual void OnEnd(){}
     virtual void OnWaitTimeout(int timeoutTimes){}
+    virtual int  QueueCount(){ return DEFAULT_QUEUE; }
+    virtual int  WaitSeconds(){ return  DEAFULT_WAIT_SECONDS; }
     virtual ~ThreadContext(){}
 };
 

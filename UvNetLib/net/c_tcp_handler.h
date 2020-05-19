@@ -139,6 +139,16 @@ public:
         return _handleID;
     }
 
+    const char* GetIp() 
+    {
+        return _addr.GetIP();
+    }
+    
+    int GetPort()
+    {
+        return _addr.GetPort();
+    }
+    
     virtual void CloseComplete();
 
 protected:

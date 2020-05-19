@@ -51,6 +51,10 @@ bool AppNetStack::WritePid()
 
 bool AppNetStack::Init(int argv, char* argc [], IAppStart* ia)
 {
+    if ( NULL == ia ){
+        return false;
+    }
+    
 	bool ret = true;
 	this->_iApp = ia;
 	std::string name = argc[0];
@@ -129,6 +133,9 @@ void AppNetStack::SetSignal()
 void AppNetStack::StopApp()
 {
     _bExit =true;
+    if ( this->_iApp){
+        _iApp->DoStop();
+    }
     PushCammand<AppNetStack>(  this,  & AppNetStack::OnExit, NULL, 0 );
 }
 
@@ -148,9 +155,10 @@ bool AppNetStack::OnStart(void* pBuf, int len)
 	}
 	return true;
 }
+
 bool AppNetStack::OnExit(void* pBuf, int len)
 {
-    SYS_INFO( "stack exit");
+    //SYS_INFO( "stack exit");
     if ( NULL == this->_iApp ||  this->_iApp->AllowExit(this) ){
         if (this->_iApp ){
             this->_iApp->OnExit(this);
@@ -162,6 +170,8 @@ bool AppNetStack::OnExit(void* pBuf, int len)
             SYS_INFO("EXIT result %d %s", ret, uv_strerror(ret));
         }
           
+    }else{
+         PushCammand<AppNetStack>(  this,  & AppNetStack::OnExit, NULL, 0 );
     }
     return true;
 }

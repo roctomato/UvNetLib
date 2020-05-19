@@ -21,6 +21,7 @@ public:
     virtual bool AllowExit(AppNetStack* ans) = 0;
     virtual bool OnExit(AppNetStack* ans) = 0;
     virtual bool OnstackStart(AppNetStack* ans) = 0;
+    virtual void DoStop() =0;
 };
 
 class AppNetStack : public event_loop
