@@ -132,8 +132,10 @@ void CTcpHandler::StartRecv()
 }
 void CTcpHandler::HandleRead(ssize_t nread, const uv_buf_t* buf)
 {
-    
     if(nread < 0) {
+        char buf[128];
+        uv_strerror_r(nread, buf,sizeof buf -1);
+        NET_ERR("handle %d err %s",this->_handleID, buf);
         this->HandleDisconnect(Disconnect_By_Peer);
     }else{
         this->_pHandleRecv->OnUvReceive(nread, buf);

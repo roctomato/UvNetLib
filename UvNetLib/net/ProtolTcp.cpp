@@ -65,7 +65,14 @@ void ProtolTcp::CheckHeader()
             this->Disconnect();
             break;
         }
+        
         this->_recvBuff.SetBodySize(bodySize);
+        
+        if ( bodySize == 0 ){
+            CheckBody();
+            break;
+        }
+        
         this->_readState = READ_STATE_BODY;
     } while(false);
 }
