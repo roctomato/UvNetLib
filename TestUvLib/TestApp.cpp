@@ -79,3 +79,6 @@ bool TestApp::StartWork(AppNetStack* ans)
     ///test_chat();
     return true;
 }
+void TestApp::DoStop()
+{
+}

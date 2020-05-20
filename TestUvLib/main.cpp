@@ -34,8 +34,9 @@ bool InitLog()
  */ 
 int main(int argc, char **argv)
 {
-    
+#ifdef _WIN32_WINNT
 	printf("%x\n",_WIN32_WINNT);
+#endif
     //test_http();
 /*   
  if ( InitLog() ){ 

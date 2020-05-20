@@ -4,7 +4,7 @@
   <Project Name="TestNetLib" Path="TestUvLib/TestNetLib.project" Active="Yes"/>
   <Project Name="hiredis" Path="thirdpart/hiredis-mingw-master/hiredis.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="UvNetLib" ConfigName="Debug"/>
       <Project Name="TestNetLib" ConfigName="Debug"/>
@@ -18,7 +18,7 @@
       <Project Name="hiredis" ConfigName="Release"/>
       <Project Name="hiredis" ConfigName="Release"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="linux_debug" Selected="no">
+    <WorkspaceConfiguration Name="linux_debug" Selected="yes">
       <Environment/>
       <Project Name="TestNetLib" ConfigName="linux_debug"/>
       <Project Name="UvNetLib" ConfigName="linux_debug"/>

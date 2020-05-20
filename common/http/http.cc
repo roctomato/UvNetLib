@@ -174,10 +174,10 @@ namespace http {
     str = ss.str();
 
     // response buffer
-    uv_buf_t resbuf = {
-        .len = str.size(),
-      .base = (char*) str.c_str(),
-    };
+    uv_buf_t resbuf;// = {
+        resbuf.len = str.size();
+      resbuf.base = (char*) str.c_str();
+    //};
 
     Context* context = static_cast<Context*>(this->parser.data);
 

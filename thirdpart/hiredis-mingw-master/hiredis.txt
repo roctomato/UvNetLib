@@ -1,1 +1,1 @@
-./Debug/dict.c.o ./Debug/hiredis.c.o ./Debug/net.c.o ./Debug/net_win32.c.o ./Debug/sds.c.o ./Debug/read.c.o ./Debug/crossplatform.c.o ./Debug/async.c.o   
+./Debug/sds.c.o ./Debug/read.c.o ./Debug/net_win32.c.o ./Debug/hiredis.c.o ./Debug/async.c.o ./Debug/net.c.o ./Debug/dict.c.o ./Debug/crossplatform.c.o

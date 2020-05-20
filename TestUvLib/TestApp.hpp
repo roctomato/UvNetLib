@@ -20,6 +20,7 @@ public:
     bool OnstackStart(AppNetStack* ans) override;
 
     bool StartWork(AppNetStack* ans) override;
+    void DoStop()  override;
 };
 
 #endif // TESTAPP_HPP
