@@ -17,6 +17,9 @@ void os_contextCleanup() {
 void os_closeFd(fd_t fd) {
     close(fd);
 }
+void os_close(fd_t fd) {
+    close(fd);
+}
 
 int os_connect(fd_t s, const struct sockaddr *addr, socklen_t addrlen) {
     return os_connect(s, addr, addrlen);

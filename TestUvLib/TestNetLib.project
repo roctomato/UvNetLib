@@ -2,7 +2,7 @@
 <CodeLite_Project Name="TestNetLib" Version="10.0.0" InternalType="Console">
   <Plugins>
     <Plugin Name="qmake">
-      <![CDATA[00020001N0005Debug0000000000000001N0007windows000000000000]]>
+      <![CDATA[00030001N0005Debug0000000000000001N0011linux_debug0000000000000001N0007windows000000000000]]>
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="kcp">
@@ -142,6 +142,62 @@
       <Linker Options="" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
       <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="linux_debug" CompilerType="GCC" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall;-std=c++11" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <IncludePath Value="../UvNetLib/general"/>
+        <IncludePath Value="../UvNetLib/net"/>
+        <IncludePath Value="../UvNetLib/thread"/>
+        <IncludePath Value="../common/http"/>
+        <IncludePath Value="../common/log"/>
+        <IncludePath Value="../common/parse_p"/>
+        <IncludePath Value="../common/kcp"/>
+        <IncludePath Value="../common/redis"/>
+        <IncludePath Value="../common/help"/>
+        <IncludePath Value="../thirdpart/hiredis-mingw-master"/>
+        <Preprocessor Value="LOG4CPP_HAVE_INT64_T"/>
+      </Compiler>
+      <Linker Options="" Required="yes">
+        <LibraryPath Value="../linux_lib"/>
+        <Library Value="UvNetLibD"/>
+        <Library Value="uv"/>
+        <Library Value="log4cpp"/>
+        <Library Value="hiredis"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../bin/$(ProjectName)/$(ProjectName)" IntermediateDirectory="../Debug/$(ProjectName)" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="../bin/$(ProjectName)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
       <BuildSystem Name="Default"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>

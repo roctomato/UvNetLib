@@ -115,6 +115,7 @@ void MWorkThread::StartThread(MWorkThread* p)
 MWorkThread::MWorkThread()
     : _active(false)
     , _working(false)
+    ,_stop(true)
 {
 }
 
@@ -136,20 +137,27 @@ bool MWorkThread::Start(int idx)
     return _active;
 }
 
-bool MWorkThread::Init(int count, int waitSecond, uv_loop_t* loop_, ThreadContext& context)
+bool MWorkThread::Init(ThreadContext* pcontext, uv_loop_t* loop_)
 {
+    if ( NULL == pcontext){
+         DB_ERR("context null");
+        return false;
+    }
+    int count = pcontext->QueueCount();
+    int waitSecond = pcontext->WaitSeconds();
+    
     _threadSideQueue.Resize(count);
     _threadSideQueue.SetWaitSeconds(waitSecond);
 
     _logicSideQueue.Init(loop_, count);
-    _context = &context;
-    return context.Init(*this, loop_);
+    _context = pcontext;
+    return pcontext->Init(*this, loop_);
 }
 
 int MWorkThread::Run()
 {
     assert(_context);
-    
+    _stop = false;
     int timeOutTimes = 0;
     this->_context->OnStart();
     while( !(!this->_active && _logicSideQueue.IsEmpty())) {
@@ -176,6 +184,7 @@ int MWorkThread::Run()
             _working = false;
         }
     }
+    _stop = true;
     this->_context->OnEnd();
     return 0;
 }
@@ -299,4 +308,17 @@ int MWorkThreadMgr::PushTask(int index, ThreadTask* p)
 {
     index = index % _threadArray.size();
     return _threadArray[index].get()->PushTask(p);
+}
+bool MWorkThreadMgr::IsAnyRunning()
+{
+    bool ret = false;
+    int threadCount = _threadArray.size();
+    for(int i = 0; i < threadCount; i++) {
+        MWorkThread* pThrd = _threadArray[i].get();
+        if ( !pThrd->IsStop() ){
+            ret = true;
+            break;
+        }
+    }
+    return ret;
 }

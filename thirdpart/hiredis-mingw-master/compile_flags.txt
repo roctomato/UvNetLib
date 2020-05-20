@@ -4,7 +4,7 @@
 -ID:\msys64\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include
 -ID:\msys64\mingw64\lib\gcc\x86_64-w64-mingw32\8.1.0\include-fixed
 -ID:\msys64\mingw64\x86_64-w64-mingw32\include
--ID:\code\windows_develop\lib\hiredis-mingw-master
+-ID:\me\git\UvNetLib\thirdpart\hiredis-mingw-master
 -DNO_OLDNAMES
 -D_WIN32_WINNT=0x0600
 -target

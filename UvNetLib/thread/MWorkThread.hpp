@@ -4,8 +4,8 @@
 #include <thread>
 #include <vector>
 
-#include "UvSync.h"
 #include "ThreadTask.hpp"
+#include "UvSync.h"
 #include "event_loop.h"
 
 class ThreadSide : public ThreadTaskListMgr
@@ -22,11 +22,11 @@ public:
 
 private:
     bool _isBlock;
-   
-    int _waitSecond; 
-    
+
+    int _waitSecond;
+
     ZbyEvent _event;
-    UvMutex  _writeLock;
+    UvMutex _writeLock;
 };
 
 class LogicSide : public ThreadTaskListMgr
@@ -52,23 +52,29 @@ public:
     MWorkThread();
     ~MWorkThread();
 
-    bool Init(int count, int waitSecond,uv_loop_t* loop_, ThreadContext& context);
+    bool Init(ThreadContext* pcontext, uv_loop_t* loop_);
     bool Start(int idx);
-    int PushTask( ThreadTask* p );
+    int PushTask(ThreadTask* p);
 
-    
-    int GetIdx(){
+    int GetIdx()
+    {
         return _threadIdx;
     }
 
-    bool IsWorking(){
+    bool IsWorking()
+    {
         return _working;
     }
-    
-    int GetUnHandleCount(){
+
+    bool IsStop()
+    {
+        return _stop;
+    }
+    int GetUnHandleCount()
+    {
         return _threadSideQueue.ReadCount();
     }
-    
+
     virtual int Run();
     virtual void Stop();
 
@@ -77,7 +83,8 @@ public:
 private:
     bool _active;
     bool _working;
-    
+    bool _stop;
+
     int _threadIdx;
     ZbyEvent _blockEvt;
 
@@ -90,13 +97,48 @@ class MWorkThreadMgr
 {
 public:
     MWorkThreadMgr();
-    void AddThread( std::shared_ptr<MWorkThread>& thrd );
+    template <typename T, typename... P> bool Init(int thread_count, uv_loop_t* loop_, P... args)
+    {
+        bool ret = true;
+        do {
+            for(int i = 0; i < thread_count; i++) {
+                std::shared_ptr<MWorkThread> p(new MWorkThread());
+                T* pCxt = new T( args...);
+                if(!p.get()->Init(pCxt, loop_)) {
+                    ret = false;
+                    break;
+                }
+                this->AddThread(p);
+            }
+        } while(false);
+
+        return ret;
+    }
+    
+     template <typename T, typename... P> int PushTaskEx(int index,  P... args)
+    {
+        int ret = -1;
+        do {
+            T * pTask = new T( args ...);
+            pTask->SetAutoDelete();
+            if ( 0 == index ){
+                PushTask(pTask);
+            }else{
+                PushTask(index, pTask);
+            }
+        } while(false);
+        return ret;
+    }
+    
+    void AddThread(std::shared_ptr<MWorkThread>& thrd);
+
     bool Start();
     void Stop();
     void Join();
-    
-    int PushTask( ThreadTask* p );
-    int PushTask( int index, ThreadTask* p );
+    bool IsAnyRunning();
+    int PushTask(ThreadTask* p);
+    int PushTask(int index, ThreadTask* p);
+
 protected:
     int _curIdx;
     int _totalPush;

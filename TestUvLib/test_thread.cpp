@@ -58,7 +58,7 @@ void test_thread()
     int count = 3;
     for( int i =0; i < count; i ++ ){
         std::shared_ptr<MWorkThread> p(new MWorkThread() );
-        p.get()->Init(2,2, loop.loop(), cnxt);
+        p.get()->Init(&cnxt, loop.loop());
         thrd.AddThread(p);
     }
     
