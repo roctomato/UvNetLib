@@ -39,14 +39,14 @@ public:
 
 };
 
-typedef  std::shared_ptr<LoggerInterfaceEx> LoggerPtr;
+typedef  LoggerInterfaceEx* LoggerPtr;
 
-void InitLog( LoggerPtr& pLo, const std::string& configFile );
+void InitLog( LoggerPtr pLo, const std::string& configFile );
 
 template<typename T>
 void InitLog(const std::string& configFile)
 {
-    LoggerPtr log = LoggerPtr(new T() );
+    LoggerPtr log = new T() ;
     InitLog(log, configFile);
 }
 
