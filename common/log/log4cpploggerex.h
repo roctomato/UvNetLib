@@ -9,11 +9,11 @@ class Log4cppLoggerEx : public LoggerInterfaceEx
 {
 public:
 	/// Instantiation Log4cppLogger object.
-	static Log4cppLoggerEx& Instance();
+	//static Log4cppLoggerEx& Instance();
 
-private:
+
 	Log4cppLoggerEx(){}
-	virtual ~Log4cppLoggerEx() {}
+	virtual ~Log4cppLoggerEx() {printf("log exit\n");}
 
 // Method.
 public:

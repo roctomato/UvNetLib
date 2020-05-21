@@ -43,7 +43,7 @@ bool TestApp::Init(int argc, char* argv[], AppNetStack* ans)
     }while(false);
 	
     try {
-        InitLog(&Log4cppLoggerEx::Instance(), _logCfgFile.c_str());
+        InitLog<Log4cppLoggerEx>( _logCfgFile.c_str());
     } catch(ConfigureExceptionEx& e) {
         printf("open log config file %s failed. Reason %s\n", _logCfgFile.c_str(), e.what());
         return false;

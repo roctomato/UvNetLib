@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include "loggerinterfaceex.h"
 
-LoggerInterfaceEx * gLog = NULL;
+LoggerPtr* gLog = NULL;
 
-void InitLog( LoggerInterfaceEx* pLog, const std::string& configFile )
+void InitLog( LoggerPtr& pLog, const std::string& configFile )
 {
-	gLog = pLog;
-	if ( gLog )
-		gLog->Configure( configFile );
+    gLog = new LoggerPtr();
+	*gLog = pLog;
+	if ( (*gLog).get() )
+		(*gLog)->Configure( configFile );
 }
 void LogPrintPrint( const std::string& categoryName, int priority, const char* format, ... )
 {
 	va_list va;
 	va_start(va,format);
-	if ( gLog ){
-		gLog->Print( categoryName, priority, format, va );
+    
+	if ( gLog && (*gLog).get() ){
+		(*gLog)->Print( categoryName, priority, format, va );
 	}else{
 		vprintf(format, va);
 		putchar('\n');
@@ -23,8 +25,8 @@ void LogPrintPrint( const std::string& categoryName, int priority, const char* f
 }
 void LogPrintPrint( const std::string& categoryName, int priority, const std::string& message)
 {
-	if ( gLog ){
-		gLog->Print( categoryName, priority, message );
+	if ( gLog && (*gLog).get() ){
+		(*gLog)->Print( categoryName, priority, message );
 	}else{
 		if ( message.empty()){
 			printf( "empty message\n");

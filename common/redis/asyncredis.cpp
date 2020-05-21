@@ -70,8 +70,8 @@ void AsyncRedis::CmdCallback(redisAsyncContext* c, void* r, void* privdata)
                 break;
             }
 
-            if(NULL == reply && c->errstr) {
-                NET_ERR("redis err %s", c->errstr);
+            if(NULL == reply && c->err && strlen(c->errstr)>0 ) {
+                NET_ERR("redis err %d %s", c->err, c->errstr);
             }
             CHiredisReply hreply(reply, false);
 

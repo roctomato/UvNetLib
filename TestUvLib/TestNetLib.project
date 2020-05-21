@@ -186,7 +186,7 @@
         <IncludePath Value="../common/kcp"/>
         <IncludePath Value="../common/redis"/>
         <IncludePath Value="../common/help"/>
-        <IncludePath Value="../thirdpart/hiredis-mingw-master"/>
+        <IncludePath Value="../thirdpart/hiredis/Include"/>
         <Preprocessor Value="LOG4CPP_HAVE_INT64_T"/>
       </Compiler>
       <Linker Options="" Required="yes">

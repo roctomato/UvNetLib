@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <stdarg.h>
 #include <string>
+#include <memory>
 
 /**
  * @brief Exception class for configuration.
@@ -38,7 +39,17 @@ public:
 
 };
 
-void InitLog( LoggerInterfaceEx* pLo, const std::string& configFile );
+typedef  std::shared_ptr<LoggerInterfaceEx> LoggerPtr;
+
+void InitLog( LoggerPtr& pLo, const std::string& configFile );
+
+template<typename T>
+void InitLog(const std::string& configFile)
+{
+    LoggerPtr log = LoggerPtr(new T() );
+    InitLog(log, configFile);
+}
+
 void LogPrintPrint( const std::string& categoryName, int priority, const char* format, ... );
 void LogPrintPrint( const std::string& categoryName, int priority, const std::string& message);
 #endif // LOGGERINTERFACEEX_H
