@@ -193,6 +193,7 @@ void MWorkThread::Stop()
 {
     this->_active = false;
     this->_threadSideQueue.Trigger();
+    DB_INFO("thread %d trigger stop", _threadIdx);
 }
 
 
