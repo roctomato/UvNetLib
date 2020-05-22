@@ -20,8 +20,14 @@ public:
     virtual void OnStart() {}
     virtual void OnEnd(){}
     virtual void OnWaitTimeout(int timeoutTimes){}
+    
+    virtual void BeforeExecute() {}
+    virtual void OnExecuteErr() {}
+    virtual void AfterExecute() {}
+    
     virtual int  QueueCount(){ return DEFAULT_QUEUE; }
     virtual int  WaitSeconds(){ return  DEAFULT_WAIT_SECONDS; }
+    
     virtual ~ThreadContext(){}
 };
 
@@ -37,13 +43,16 @@ public:
 	void DoExecute(int idx, ThreadContext* param) {
 		_excuteOk = false;
 		try{
+            if ( param ) param->BeforeExecute();
 			 this->Execute(idx, param);
 			_excuteOk = true;
 		}catch(...){
 			DB_ERR( "thread task err");
 			_excuteOk = false;
 			_callHandleResult = true;
+            if ( param )param->OnExecuteErr();
 		}
+        if ( param) param->AfterExecute();
 	}
 
     void DoHandleResult(){
