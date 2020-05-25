@@ -6,8 +6,9 @@
 
 AppNetStack* AppNetStack::s_ins = NULL;
 
-AppNetStack::AppNetStack():_iApp(NULL)
-,event_loop(true)
+AppNetStack::AppNetStack()
+:event_loop(true)
+,_iApp(NULL)
 {
 	_daemon = false;
 	_bExit = false;
