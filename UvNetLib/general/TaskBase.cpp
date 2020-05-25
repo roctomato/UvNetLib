@@ -9,6 +9,10 @@ TaskBase::TaskBase()
 
 TaskBase::~TaskBase()
 {
+    if ( this->IsStart() ){
+        this->Cancel(3);
+        SYS_ERR("%s deconstruct but no finish", this->_taskTag.c_str());
+    }
 }
 
 bool TaskBase::Cancel(int reason)
