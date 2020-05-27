@@ -52,4 +52,6 @@ void InitLog(const std::string& configFile)
 
 void LogPrintPrint( const std::string& categoryName, int priority, const char* format, ... );
 void LogPrintPrint( const std::string& categoryName, int priority, const std::string& message);
+void CloseLog();
+
 #endif // LOGGERINTERFACEEX_H

@@ -38,3 +38,7 @@ void LogPrintPrint( const std::string& categoryName, int priority, const std::st
 	}
 	
 }
+void CloseLog()
+{
+    gLog = NULL;
+}
