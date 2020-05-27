@@ -28,12 +28,12 @@ public:
 
 
 	/// Log a message with the specified category and priority.
-	virtual void Print( const std::string& categoryName_, int priority_, const char* format_,  va_list args ) {
+	void Print( const std::string& categoryName_, int priority_, const char* format_,  va_list args ) override {
 		log4cpp::Category::getInstance( categoryName_ ).logva( priority_, format_, args );
 	};
 
 	/// Log a message with the specified category and priority.
-	virtual void Print( const std::string& categoryName_, int priority_, const std::string& message_ )  {
+	void Print( const std::string& categoryName_, int priority_, const std::string& message_ ) override {
 		log4cpp::Category::getInstance( categoryName_ ).log( priority_, message_ );
 	};
 
