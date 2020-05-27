@@ -170,7 +170,7 @@ bool AppNetStack::OnExit(void* pBuf, int len)
         if ( ret){
             SYS_INFO("EXIT result %d %s", ret, uv_strerror(ret));
         }
-          
+        CloseLog();
     }else{
          PushCammand<AppNetStack>(  this,  & AppNetStack::OnExit, NULL, 0 );
     }
