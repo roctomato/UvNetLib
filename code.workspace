@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="code" Database="" Version="10.0.0">
-  <Project Name="UvNetLib" Path="UvNetLib/UvNetLib.project" Active="No"/>
-  <Project Name="TestNetLib" Path="TestUvLib/TestNetLib.project" Active="Yes"/>
+  <Project Name="UvNetLib" Path="UvNetLib/UvNetLib.project" Active="Yes"/>
+  <Project Name="TestNetLib" Path="TestUvLib/TestNetLib.project" Active="No"/>
   <Project Name="mingw_hiredis" Path="thirdpart/hiredis-mingw-master/hiredis.project" Active="No"/>
+  <Project Name="hiredis" Path="thirdpart/hiredis/Include/hiredis.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="UvNetLib" ConfigName="Debug"/>
       <Project Name="TestNetLib" ConfigName="Debug"/>
       <Project Name="mingw_hiredis" ConfigName="Debug"/>
       <Project Name="mingw_hiredis" ConfigName="Debug"/>
+      <Project Name="linux_hiredis" ConfigName="Debug"/>
       <Project Name="linux_hiredis" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="no">
@@ -19,13 +21,15 @@
       <Project Name="mingw_hiredis" ConfigName="Release"/>
       <Project Name="mingw_hiredis" ConfigName="Release"/>
       <Project Name="linux_hiredis" ConfigName="Release"/>
+      <Project Name="linux_hiredis" ConfigName="Release"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="linux_debug" Selected="no">
+    <WorkspaceConfiguration Name="linux_debug" Selected="yes">
       <Environment/>
       <Project Name="TestNetLib" ConfigName="linux_debug"/>
       <Project Name="UvNetLib" ConfigName="linux_debug"/>
       <Project Name="linux_hiredis" ConfigName="linux_debug"/>
       <Project Name="mingw_hiredis" ConfigName="linux_debug"/>
+      <Project Name="linux_hiredis" ConfigName="linux_debug"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
