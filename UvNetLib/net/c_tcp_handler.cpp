@@ -4,11 +4,9 @@
 #include "event_loop.h"
 #include "zby_debug.h"
 
-
-
 CTcpHandler::CTcpHandler(bool asConnector, ZbyEvtHandlerMgr* pFac)
     : _pFactory(pFac)
-    ,_p_connect_req(nullptr)
+    , _p_connect_req(nullptr)
 {
     _disReason = Disconnect_Connect_Failed;
 
@@ -19,7 +17,7 @@ CTcpHandler::CTcpHandler(bool asConnector, ZbyEvtHandlerMgr* pFac)
 
     if(asConnector) {
         this->SetAsConnect();
-    } 
+    }
     this->_evtHandler.data = this;
     _pHandleRecv = nullptr;
 }
@@ -43,15 +41,28 @@ int CTcpHandler::init_tcp(event_loop& loop)
 
 void CTcpHandler::SetAsConnect()
 {
-    if ( nullptr == _p_connect_req){
-         _p_connect_req = new uv_connect_t();
-         memset(_p_connect_req, 0, sizeof(uv_connect_t));
-        _p_connect_req->data = this;
+    
+    if(nullptr == _p_connect_req) {
+        _p_connect_req = new uv_connect_t();
     }
-   
+    if (_p_connect_req){
+        memset(_p_connect_req, 0, sizeof(uv_connect_t));
+        _p_connect_req->data = this;
+    }else{
+        NET_ERR("connector out of memory");
+    }
+    
+}
+bool CTcpHandler::ReConnect(uv_loop_t* loop)
+{
+    SetAsConnect();
+    
+    const char* ip = this->GetIp();
+    unsigned short port = this->GetPort();
+    return Connect(ip, port, loop);
 }
 
-bool CTcpHandler::Connect(const char* pHost, unsigned short port,  uv_loop_t*  loop)
+bool CTcpHandler::Connect(const char* pHost, unsigned short port, uv_loop_t* loop)
 {
     bool ret = false;
     do {
@@ -134,10 +145,10 @@ void CTcpHandler::HandleRead(ssize_t nread, const uv_buf_t* buf)
 {
     if(nread < 0) {
         char buf[128];
-        uv_strerror_r(nread, buf,sizeof buf -1);
-        NET_ERR("handle %d err %s",this->_handleID, buf);
+        uv_strerror_r(nread, buf, sizeof buf - 1);
+        NET_ERR("handle %d err %s", this->_handleID, buf);
         this->HandleDisconnect(Disconnect_By_Peer);
-    }else{
+    } else {
         this->_pHandleRecv->OnUvReceive(nread, buf);
     }
 }
@@ -172,6 +183,7 @@ void CTcpHandler::HandleAccept(uv_stream_t* server)
         ::uv_close((uv_handle_t*)&_evtHandler, CloseCallback);
     }
 }
+
 //////////////////////////////////////////////////////////////
 
 int Sender::Send(uv_stream_t* stream, SendBuffSptr& buf)
@@ -195,9 +207,9 @@ int Sender::Send(uv_stream_t* stream, GenSendQueue& sq)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-CnRawSock::CnRawSock(int bufLen,bool asConnector,  ZbyEvtHandlerMgr* pFac )
-:CTcpHandler(asConnector, pFac)
-,_bufLen(bufLen)
+CnRawSock::CnRawSock(int bufLen, bool asConnector, ZbyEvtHandlerMgr* pFac)
+    : CTcpHandler(asConnector, pFac)
+    , _bufLen(bufLen)
 {
     this->_pBuf = (char*)malloc(bufLen);
     this->SetRecvHandler(this);
@@ -205,17 +217,15 @@ CnRawSock::CnRawSock(int bufLen,bool asConnector,  ZbyEvtHandlerMgr* pFac )
 
 CnRawSock::~CnRawSock()
 {
-    if ( this->_pBuf){
+    if(this->_pBuf) {
         free(this->_pBuf);
     }
 }
 
-
-
 void CnRawSock::SetRecvBuff(size_t suggested_size, uv_buf_t* buf)
 {
     buf->base = this->_pBuf;
-    buf->len  = this->_bufLen;
+    buf->len = this->_bufLen;
 }
 
 void CnRawSock::OnUvReceive(ssize_t nread, const uv_buf_t* buf)
@@ -224,14 +234,14 @@ void CnRawSock::OnUvReceive(ssize_t nread, const uv_buf_t* buf)
 }
 void CnRawSock::HandleAfterSend()
 {
-     if ( this->_closeAfterSend && 0 == uv_stream_get_write_queue_size( (uv_stream_t*)(&this->_evtHandler))){
+    if(this->_closeAfterSend && 0 == uv_stream_get_write_queue_size((uv_stream_t*)(&this->_evtHandler))) {
         this->Disconnect();
     }
 }
 int CnRawSock::SendMsg(char* pBuf, int len)
 {
     SendBuffSptr buf = SimpleSendBuff::CreateEx(pBuf, len);
-    return this->Send((uv_stream_t*)(&this->_evtHandler),buf);
+    return this->Send((uv_stream_t*)(&this->_evtHandler), buf);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 int Connector::Connect(uv_tcp_t& handle, const char* host, int port)
@@ -312,8 +322,7 @@ void SimpleReadEvt::HandleDisconnect(int reason)
 {
     this->OnDisconnect(reason);
     if(::uv_is_closing((uv_handle_t*)&_readHandler) == 0) {
-        ::uv_close((uv_handle_t*)&_readHandler, [](uv_handle_t * handle)
-        {
+        ::uv_close((uv_handle_t*)&_readHandler, [](uv_handle_t* handle) {
             SimpleReadEvt* pCl = (SimpleReadEvt*)(handle->data);
             if(NULL == pCl) {
                 SYS_ERR("SimpleReadEvt null");
@@ -337,7 +346,7 @@ void SimpleReadEvt::Disconnect()
         ::uv_shutdown(&_shutdown_req, (uv_stream_t*)(&this->_readHandler), [](uv_shutdown_t* req, int status) {
             SimpleReadEvt* p = (SimpleReadEvt*)req->data;
             if(p) {
-               p->HandleDisconnect(Disconnect_By_Self);
+                p->HandleDisconnect(Disconnect_By_Self);
             }
         });
     }

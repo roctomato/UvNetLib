@@ -67,6 +67,8 @@ public:
     int init_tcp(event_loop& loop);
 
     bool Connect(const char* pHost, unsigned short port, uv_loop_t* loop);
+    bool ReConnect( uv_loop_t* loop);
+    
     void Disconnect();
 
     void HandleAccept(uv_stream_t* server);

@@ -519,7 +519,7 @@ bool CHiredisReply::GetString(std::string& value, redisReply* r)
         break;
     case REDIS_REPLY_ERROR:
     case REDIS_REPLY_STRING:
-        value = r->str;
+        value.assign(r->str, r->len);
         break;
     case REDIS_REPLY_ARRAY:
     case REDIS_REPLY_STATUS:
