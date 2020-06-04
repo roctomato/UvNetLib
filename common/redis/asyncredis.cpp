@@ -92,9 +92,9 @@ void AsyncRedis::CmdCallback(redisAsyncContext* c, void* r, void* privdata)
 void AsyncRedis::HandleConnect(int status)
 {
     auto f = [](redisAsyncContext* c, AsyncRedis* redis, CHiredisReply& reply, void* param) -> bool {
-        redis->OnConnect(c->err);
         redis->_bConnect = true;
         redis->_cnntState = REDIS_STATE_CONNECTED;
+        redis->OnConnect(c->err);
         return true;
     };
 
