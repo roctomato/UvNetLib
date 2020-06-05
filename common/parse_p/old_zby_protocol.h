@@ -5,6 +5,7 @@
 
 struct PacketHeader
 {
+    static const LsUInt16 HEAD_SIZE = 10;
 	LsUInt16 nSize; // 包的总大小，包含包头
 	LsUInt16 nCmdID; // msg id
 	LsUInt16 nFlags; // 网络包标记，用来标记是否压缩等信息
@@ -12,7 +13,7 @@ struct PacketHeader
 	LsUInt16 nDateLen;
 	PacketHeader()
 	{
-		nSize = sizeof(PacketHeader);
+		nSize = 0;
 		nCmdID = 0;
 		nFlags = 0;
 		nModuleID = 0;
@@ -20,6 +21,7 @@ struct PacketHeader
 	}
 	
 	bool PushTo( GenSendQueue& send , LsUInt16 cmd=0, LsUInt16 flag=0, LsUInt16 mid =0 );
+    bool ReadFrom(CInArchive& arch);
 };
 
 class OldZbyProtocol : public NetProtocolHandler
@@ -34,7 +36,7 @@ public:
 
 struct ParseOldZbyMsg
 {
-	PacketHeader* header= NULL;
+	PacketHeader head;
 	LsInt8* pBuf        = NULL; 
 	LsInt32 bufLen      = 0;
  

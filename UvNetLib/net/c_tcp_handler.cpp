@@ -41,22 +41,21 @@ int CTcpHandler::init_tcp(event_loop& loop)
 
 void CTcpHandler::SetAsConnect()
 {
-    
+
     if(nullptr == _p_connect_req) {
         _p_connect_req = new uv_connect_t();
     }
-    if (_p_connect_req){
+    if(_p_connect_req) {
         memset(_p_connect_req, 0, sizeof(uv_connect_t));
         _p_connect_req->data = this;
-    }else{
+    } else {
         NET_ERR("connector out of memory");
     }
-    
 }
 bool CTcpHandler::ReConnect(uv_loop_t* loop)
 {
     SetAsConnect();
-    
+
     const char* ip = this->GetIp();
     unsigned short port = this->GetPort();
     return Connect(ip, port, loop);
@@ -161,12 +160,20 @@ void CTcpHandler::Disconnect()
 
         memset(&_shutdown_req, 0, sizeof _shutdown_req);
         _shutdown_req.data = this;
-        ::uv_shutdown(&_shutdown_req, (uv_stream_t*)(&this->_evtHandler), [](uv_shutdown_t* req, int status) {
+        int ret = ::uv_shutdown(&_shutdown_req, (uv_stream_t*)(&this->_evtHandler), [](uv_shutdown_t* req, int status) {
             CTcpHandler* p = (CTcpHandler*)req->data;
             if(p) {
                 p->HandleShutdown(status);
             }
         });
+        if(ret < 0) {
+            char buf[128];
+            uv_strerror_r(ret, buf, sizeof buf - 1);
+            NET_ERR("handle %d err %d:%s", this->_handleID, ret, buf);
+        }else{
+            this->_closeAfterSend = false;
+        }
+        
     }
 }
 void CTcpHandler::HandleShutdown(int status)
