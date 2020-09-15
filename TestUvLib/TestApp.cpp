@@ -3,6 +3,7 @@
 #include "log4cpploggerex.h"
 #include "ChatServerHandler.hpp"
 #include "getopt.h"
+#include "Archive.h"
 
 //extern test_chat();
 TestApp::TestApp()
@@ -17,9 +18,21 @@ bool TestApp::AllowExit(AppNetStack* ans)
 {
     return true;
 }
-
+void test_arch()
+{
+    std::string v("hello");
+    COutArchive out;
+    out << v;
+    LsUInt32 len;
+    char* p = out.GetBuf(len);
+    
+    CInArchive in(p,len);
+    std::string s;
+    in >> s;
+}
 bool TestApp::Init(int argc, char* argv[], AppNetStack* ans)
 {
+    test_arch();
 	std::string _logCfgFile = "server.config";
     bool bKill = false;
 

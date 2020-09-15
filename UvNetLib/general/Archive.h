@@ -117,7 +117,8 @@ public:
 	// implement COutBuff
 	virtual void Append( const char* pData, int len )
 	{
-		_strBuf.append( pData, len );
+        if ( pData && len > 0)
+            _strBuf.append( pData, len );
 	}
 	virtual int  StartWrite( LsUInt8 sz = 0 ) { return 0; }
 	virtual	bool EndWrite(  int payload = 0)  { return true; }
@@ -143,6 +144,9 @@ public:
 		if ( sz > _leftSize ){
 			throw "overflow";
 		}
+        if ( NULL == pData || 0 == sz ){
+            return;
+        }
 		memcpy(  _pPos, pData, sz);
         _pPos += sz;
         _leftSize -= sz;
